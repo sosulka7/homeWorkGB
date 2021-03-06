@@ -1,24 +1,24 @@
-public class Cat extends Animals
-{
-    Cat(String name, String color)
-    {
-        super(name, color);
-    }
-    @Override
-    protected void runAnimal(int run)
-    {
-        if (run <= 200 && run > 0 )
-        {
-            System.out.println(getName() + " пробежал " + run + " м");
-        }
-        else
-        {
-            System.out.println(getName() + " не может столько пробежать");
-        }
-    }
+public class Cat {
+    String name;
+    int appetite;
+    boolean satiety;
 
-    @Override
-    protected void swimAnimal(int swim) {
-        System.out.println("Вы чего? Кошки не умеют плавать!");
+    Cat(String name, int appetite, boolean satiety) {
+        this.name = name;
+        this.appetite = appetite;
+        this.satiety = satiety;
+    }
+    public void eat(Plate a) {
+        if (appetite > a.food && satiety == false) {
+            System.out.println(name + " - не хватает еды");
+            a.addFood();
+        }
+
+        a.decreaseFood(appetite);
+        satiety = true;
+        System.out.println(name + " наелся ");
+    }
+    void catInfoSatiety(){
+        System.out.println(name + ": сытость " + satiety);
     }
 }
